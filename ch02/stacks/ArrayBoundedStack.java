@@ -11,7 +11,7 @@
 
 package ch02.stacks;
 
-public class ArrayBoundedStack<T> implements StackInterface<T> 
+public class ArrayBoundedStack<T> 
 {
   protected final int DEFCAP = 100; // default capacity
   protected T[] elements;           // holds stack elements

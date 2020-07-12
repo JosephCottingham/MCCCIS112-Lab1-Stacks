@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class game
+{
+   public static void main(String [] args)
+   {
+      board b = new board();
+      Scanner scn = new Scanner(System.in);
+      char menu;
+      do {
+         System.out.println(b.getCurBoardAsStr());         
+         System.out.print("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
+         menu = scn.nextLine().toCharArray();  
+         switch (menu[0]) {
+            case 'm':
+               System.out.print("\nY Coorinate: ");
+               String C1 = scn.next();
+               System.out.print("\nX Coorinate: ");
+               String C2 = scn.next();
+               b.move(Integer.parseInt(C1), Integer.parseInt(C2));
+               break;
+            case 'u':
+               b.undo();
+               break;
+            case 'r':
+               b.redo();
+               break;
+         } 
+      } while (menu[0]!='q');
+   }
+
+}

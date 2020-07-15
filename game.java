@@ -11,7 +11,7 @@ public class game
          System.out.println(b.getCurBoardAsStr());
          System.out.print("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
          menu = scn.nextLine().toCharArray()[0];
-         switch (menu[0]) {
+         switch (menu) {
             case 'm':
                System.out.print("\nY Coorinate: ");
                String C1 = scn.next();
@@ -26,7 +26,7 @@ public class game
                b.redo();
                break;
          }
-      } while (menu[0]!='q');
+      } while (menu!='q');
    }
 
 }

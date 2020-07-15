@@ -8,9 +8,9 @@ public class game
       Scanner scn = new Scanner(System.in);
       char menu;
       do {
-         System.out.println(b.getCurBoardAsStr());         
+         System.out.println(b.getCurBoardAsStr());
          System.out.print("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
-         menu = scn.nextLine().toCharArray();  
+         menu = scn.nextLine().toCharArray()[0];
          switch (menu[0]) {
             case 'm':
                System.out.print("\nY Coorinate: ");
@@ -25,7 +25,7 @@ public class game
             case 'r':
                b.redo();
                break;
-         } 
+         }
       } while (menu[0]!='q');
    }
 

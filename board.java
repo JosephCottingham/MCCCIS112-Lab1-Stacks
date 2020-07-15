@@ -13,7 +13,7 @@ public class board{
         {4, 0,0,0,0,0},
         {5, 0,0,0,0,0}
     };
-    
+
     ArrayBoundedStack<int[][]> redo = new ArrayBoundedStack<int[][]>();
     ArrayBoundedStack<int[][]> undo = new ArrayBoundedStack<int[][]>();
 
@@ -44,7 +44,7 @@ public class board{
 
 
     public void move(int x, int y){
-        if (curBoard[++x][++y] % 2 == 0){
+        if (curBoard[x][y] % 2 == 0){
             undo.push(curBoard);
             curBoard[x][y]++;
         }
@@ -77,7 +77,7 @@ public class board{
                     dis += String.valueOf(curBoard[y][x]);
                     dis += " ";
                 }
-            } 
+            }
             dis += "\n";
         }
         return dis;

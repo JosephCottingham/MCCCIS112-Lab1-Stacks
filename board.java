@@ -82,4 +82,38 @@ public class board{
         }
         return dis;
     }
+
+    public String getReviealedBaord(){
+      String dis = "";
+      for(int x = 0; x < 6; x++){
+          for(int y = 0; y < 6; y++){
+              if (y == 0 && x == 0) dis += "   ";
+              else if (x > 0 && y > 0) {
+                  switch (curBoard[y][x]) {
+                      case 0:
+                          dis += " X ";
+                          break;
+                      case 1:
+                          dis += " X ";
+                          break;
+                      case 2:
+                          dis += " O ";
+                          break;
+                      case 3:
+                          dis += " O ";
+                          break;
+                      default:
+                          break;
+                  }
+              } else {
+                  dis += " ";
+                  dis += String.valueOf(curBoard[y][x]);
+                  dis += " ";
+              }
+          }
+          dis += "\n";
+      }
+      return dis;
+
+    }
 }

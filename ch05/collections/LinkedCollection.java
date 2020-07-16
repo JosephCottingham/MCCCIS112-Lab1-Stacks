@@ -19,6 +19,8 @@ public class LinkedCollection<T> implements CollectionInterface<T>
   protected boolean found;        // true if target found, else false
   protected LLNode<T> location;   // node containing target, if found
   protected LLNode<T> previous;   // node preceding location
+CollectionInterface newCollection = new CollectionInterface();
+
 
   public LinkedCollection()
   {

@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class board{
     final int ROW = 5;
     final int COLUMN = 5;
+    int count = 0;
 
     int[][] curBoard = {
         {0, 1,2,3,4,5},
@@ -31,6 +32,7 @@ public class board{
         redo.push(curBoard);
         curBoard = redo.top();
         redo.pop();
+        count++;
     }
 
 
@@ -39,6 +41,7 @@ public class board{
         undo.push(curBoard);
         curBoard = redo.top();
         redo.pop();
+        count--;
 
     }
 
@@ -47,8 +50,26 @@ public class board{
         if (curBoard[x][y] % 2 == 0){
             undo.push(curBoard);
             curBoard[x][y]++;
+            count++;
         }
     }
+    public Boolean endGame()
+    {
+      String end = "You have used all 3 moves. Game over.";
+            
+    if (count == 3)
+     {
+       System.out.println(end);
+        return true;	
+     }
+         
+      else 
+         {
+           return false;
+            
+         }    
+    }
+ 
 
     public String getCurBoardAsStr(){
         String dis = "";

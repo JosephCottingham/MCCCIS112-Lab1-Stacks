@@ -1,4 +1,4 @@
-import ch02.stacks.ArrayBoundedStack;
+import ch02.stacks.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class board{
@@ -46,8 +46,19 @@ public class board{
     }
 
 
-    public void move(int x, int y){
-        if (curBoard[x][y] % 2 == 0){
+    public void move(int x, int y)
+    {
+      if (x < 0 || y < 0)
+      {
+         throw new StackUnderflowException("Number less than 0. Not in coordinate range.");
+      }
+      if (x > 6 || y > 6)
+      {
+         throw new StackOverflowException("Number greater than 6. Not in coordinate range.");
+      }
+        
+        if (curBoard[x][y] % 2 == 0)
+        {
             undo.push(curBoard);
             curBoard[x][y]++;
             count++;

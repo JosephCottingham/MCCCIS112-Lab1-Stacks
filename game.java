@@ -8,12 +8,12 @@ public class game
       char menu;
  
       do {
+         System.out.println("Try to find the hidden Os in the board! You may undo or redo turns. You only have three turns. Good Luck!");
          System.out.println(b.getCurBoardAsStr());
-         System.out.print("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
-         menu = scn.nextLine().toCharArray()[0];
+    
        
          System.out.println("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
-         System.out.print("Enter Value: ");
+         //System.out.print("Enter Value: ");
          menu = scn.next().charAt(0);
          switch (menu) {
             case 'm':
@@ -30,6 +30,7 @@ public class game
                b.redo();
                break;
          } 
+        
       }
        while (menu!='q');
    }

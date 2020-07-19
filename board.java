@@ -115,7 +115,7 @@ public class board{
         return dis;
     }
 
-    public String getReviealedBaord(){
+    public String getRevealedBaord(){
       String dis = "";
       for(int x = 0; x < 6; x++){
           for(int y = 0; y < 6; y++){

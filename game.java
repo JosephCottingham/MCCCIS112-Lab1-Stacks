@@ -9,8 +9,9 @@ public class game
  
       do {
          System.out.println("Try to find the hidden Os in the board! You may undo or redo turns. You only have three turns. Good Luck!");
+         System.out.println("Moves Remaining: " + String.valueOf(3-b.getCount()));
          System.out.println(b.getCurBoardAsStr());
-    
+         
        
          System.out.println("\n[m]ove, [u]ndo, [r]edo, [q]uit: ");
          //System.out.print("Enter Value: ");
@@ -29,8 +30,12 @@ public class game
             case 'r':
                b.redo();
                break;
-         } 
-        
+         }
+         if(b.isGameOver()){
+            menu = 'q';
+            System.out.println("You have used all 3 moves. Game over.");
+            System.out.println(b.getRevealedBoardAsString());
+         }
       }
        while (menu!='q');
    }

@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class board{
     final int ROW = 5;
     final int COLUMN = 5;
-    int count = 0;
+    int curCount = 0;
 
     int[][] curBoard = {
         {0, 1,2,3,4,5},
@@ -18,6 +18,9 @@ public class board{
     ArrayBoundedStack<int[][]> redo = new ArrayBoundedStack<int[][]>();
     ArrayBoundedStack<int[][]> undo = new ArrayBoundedStack<int[][]>();
 
+    ArrayBoundedStack<Integer> redoCount = new ArrayBoundedStack<Integer>();
+    ArrayBoundedStack<Integer> undoCount = new ArrayBoundedStack<Integer>();
+
     public board(){
         for (int x = 0; x < 3; x++) curBoard[ThreadLocalRandom.current().nextInt(0, 5)][ThreadLocalRandom.current().nextInt(1, 6)] = 2;
     }
@@ -26,13 +29,19 @@ public class board{
         return curBoard;
     }
 
+    public int getCount(){
+        return curCount;
+    }
+
 
     public void undo(){
         if (undo.isEmpty()) return;
         redo.push(curBoard);
         curBoard = redo.top();
         redo.pop();
-        count++;
+        redoCount.push(curCount);
+        curCount = redoCount.top();
+        redoCount.pop();
     }
 
 
@@ -41,8 +50,9 @@ public class board{
         undo.push(curBoard);
         curBoard = redo.top();
         redo.pop();
-        count--;
-
+        undoCount.push(curCount);
+        curCount = redoCount.top();
+        redoCount.pop();
     }
 
 
@@ -61,24 +71,14 @@ public class board{
         {
             undo.push(curBoard);
             curBoard[x][y]++;
-            count++;
+            curCount++;
+            undoCount.push(curCount);
         }
     }
-    public Boolean endGame()
-    {
-      String end = "You have used all 3 moves. Game over.";
-            
-    if (count == 3)
-     {
-       System.out.println(end);
-        return true;	
-     }
-         
-      else 
-         {
-           return false;
-            
-         }    
+    public Boolean isGameOver()
+    {            
+    if (curCount >= 3) return true;	
+    return false;   
     }
  
 
@@ -115,7 +115,7 @@ public class board{
         return dis;
     }
 
-    public String getRevealedBaord(){
+    public String getRevealedBoardAsString(){
       String dis = "";
       for(int x = 0; x < 6; x++){
           for(int y = 0; y < 6; y++){

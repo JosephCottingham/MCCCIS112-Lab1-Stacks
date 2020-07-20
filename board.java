@@ -37,11 +37,11 @@ public class board{
     public void undo(){
         if (undo.isEmpty()) return;
         redo.push(curBoard);
-        curBoard = redo.top();
-        redo.pop();
+        curBoard = undo.top();
+        undo.pop();
         redoCount.push(curCount);
-        curCount = redoCount.top();
-        redoCount.pop();
+        curCount = undoCount.top();
+        undoCount.pop();
     }
 
 
@@ -69,18 +69,62 @@ public class board{
         
         if (curBoard[x][y] % 2 == 0)
         {
-            undo.push(curBoard);
-            curBoard[x][y]++;
-            curCount++;
+            redo = new ArrayBoundedStack<int[][]>();
+            redoCount = new ArrayBoundedStack<Integer>();
+            undo.push(copy(curBoard));
+            curBoard[x][y] = curBoard[x][y]+1;
             undoCount.push(curCount);
+            curCount++;
         }
     }
     public Boolean isGameOver()
-    {            
+    {        
     if (curCount >= 3) return true;	
     return false;   
     }
- 
+    
+    private int[][] copy(int[][] array){
+        int[][] copy = new int[6][6];
+        for(int x = 0; x < 6; x++){
+            for(int y = 0; y < 6; y++){
+                copy[y][x] = array[y][x];
+            }
+        } 
+        return copy;
+    }
+
+    private void printBoard(int[][] board){
+        String dis = "PrintBoard\n";
+        for(int x = 0; x < 6; x++){
+            for(int y = 0; y < 6; y++){
+                if (y == 0 && x == 0) dis += "   ";
+                else if (x > 0 && y > 0) {
+                    switch (board[y][x]) {
+                        case 0:
+                            dis += " * ";
+                            break;
+                        case 1:
+                            dis += " X ";
+                            break;
+                        case 2:
+                            dis += " * ";
+                            break;
+                        case 3:
+                            dis += " O ";
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    dis += " ";
+                    dis += String.valueOf(board[y][x]);
+                    dis += " ";
+                }
+            }
+            dis += "\n";
+        }
+        System.out.print(dis);
+    }
 
     public String getCurBoardAsStr(){
         String dis = "";

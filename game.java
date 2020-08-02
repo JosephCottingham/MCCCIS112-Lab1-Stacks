@@ -8,7 +8,7 @@ public class game
       char menu;
  
       do {
-         System.out.println("Try to find the hidden Os in the board! You may undo or redo turns. You only have three turns. Good Luck!");
+         System.out.println("Try to find the two hidden Os in the board! You may undo or redo turns. You only have three turns. Good Luck!");
          System.out.println("Moves Remaining: " + String.valueOf(3-b.getCount()));
          System.out.println(b.getCurBoardAsStr());
          
@@ -24,12 +24,15 @@ public class game
                String C2 = scn.next();
                b.move(Integer.parseInt(C1), Integer.parseInt(C2));
                break;
-              case 'u':
+            case 'u':
                b.undo();
                break;
             case 'r':
                b.redo();
                break;
+            case 'q':
+               System.out.println("You have quit shame on you, here is the board!");
+               System.out.println(b.getRevealedBoardAsString());
          }
          if(b.isGameOver()){
             menu = 'q';

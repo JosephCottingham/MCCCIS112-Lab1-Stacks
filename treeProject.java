@@ -11,6 +11,7 @@ public class treeProject extends BinarySearchTree<Integer>
    {
       treeProject tree = new treeProject();
       for (int x = 0; x < 15; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000));
+     System.out.print("\n\nIterative\n\n");
       tree.inorder();
       System.out.print("\n\nRecurive\n\n");
       tree.inorderRec(tree.root);

@@ -13,7 +13,6 @@ public class treeProject extends BinarySearchTree<Integer>
       tree.add(8);
       tree.add(3);
       tree.add(4);
-      System.out.println(tree.toString());
       tree.inorder();
       
    }

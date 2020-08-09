@@ -3,16 +3,14 @@ import ch04.queues.*;
 import ch02.stacks.*;
 import support.BSTNode;      
 import support.LLNode;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class treeProject extends BinarySearchTree<Integer>
 {
    public static void main (String[] args)
    {
       treeProject tree = new treeProject();
-      tree.add(7);
-      tree.add(8);
-      tree.add(3);
-      tree.add(4);
+      for (int x = 0; x < 50; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000););
       System.out.println(tree.toString());
       tree.inorder();
       

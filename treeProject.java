@@ -10,9 +10,10 @@ public class treeProject extends BinarySearchTree<Integer>
    public static void main (String[] args)
    {
       treeProject tree = new treeProject();
-      for (int x = 0; x < 50; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000));
+      for (int x = 0; x < 15; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000));
       tree.inorder();
-      
+      System.out.print("\n\nRecurive\n\n");
+      tree.inorderRec(tree.root);
    }
 
    public void inorder()
@@ -39,4 +40,12 @@ public class treeProject extends BinarySearchTree<Integer>
       }
    
    }
+   public void inorderRec(BSTNode node)
+   {
+   if(node != null) {
+      inorderRec(node.getLeft());   
+      System.out.println(node.getInfo());
+      inorderRec(node.getRight());  
+  }
+}
 }

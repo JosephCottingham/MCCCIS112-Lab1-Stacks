@@ -10,7 +10,7 @@ public class treeProject extends BinarySearchTree<Integer>
    public static void main (String[] args)
    {
       treeProject tree = new treeProject();
-      for (int x = 0; x < 50; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000););
+      for (int x = 0; x < 50; x++) tree.add(ThreadLocalRandom.current().nextInt(-1000, 1000));
       System.out.println(tree.toString());
       tree.inorder();
       
@@ -34,7 +34,7 @@ public class treeProject extends BinarySearchTree<Integer>
          {
             curr = stack.top();
             stack.pop();
-            System.out.print(String.valueOf(curr.getInfo()) + " ");
+            System.out.println(String.valueOf(curr.getInfo()) + " ");
             curr = curr.getRight();
          }
       }
